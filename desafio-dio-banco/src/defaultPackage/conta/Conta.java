@@ -1,27 +1,33 @@
-package defaultPackage;
+package defaultPackage.conta;
+
+import defaultPackage.Cliente;
 
 public abstract class Conta implements IConta {
-    //Constates
+    //Constates:
     private static final int AGENCIA_PADRAO = 1;
     private static int SEQUENCIAL = 1;
 
 
-    //Atributos
+    //Atributos:
     protected int agencia;
     protected int numero;
     protected double saldo;
+    protected double fatura;
     protected Cliente cliente;
+    protected int tipoDeConta;
 
 
-    //Constructor
+    //Constructor:
     public Conta(Cliente cliente) {
         this.agencia = AGENCIA_PADRAO;
         this.numero = SEQUENCIAL++;
         this.saldo = 0;
+        this.fatura = 0;
         this.cliente = cliente;
+        this.tipoDeConta = 0;
     }
 
-    //Getters das variaveis de Conta
+    //Getters das variaveis de Conta:
     public int getAgencia() {
         return agencia;
     }
@@ -34,10 +40,17 @@ public abstract class Conta implements IConta {
         return saldo;
     }
 
+    public int getTipoDeConta() {
+        return tipoDeConta;
+    }
+
+    public double getFatura() {
+        return fatura;
+    }
 
 
 
-//Classes implementadas da Interface IConta
+    //Metodos implementados da Interface IConta:
     @Override
     public void sacar(double valor) {
         saldo -= valor;
@@ -54,6 +67,26 @@ public abstract class Conta implements IConta {
         contaDestino.depositar(valor);
     }
 
+    @Override
+    public void comprarNoCredito(double valor) {
+        this.fatura += valor;
+    }
+
+    @Override
+    public void pagarFatura() {
+        if(this.saldo >= this.fatura){
+            this.saldo -= this.fatura;
+            this.fatura = 0;
+            System.out.println("Fatura atual PAGA!");
+        }
+        else {
+            System.out.println("Saldo insuficiente para pagar a fatura atual!");
+        }
+    }
+
+
+
+    //Metodo da classe Conta:
     public void imprimirDadosComuns(){
         System.out.println(String.format("Titular: %s ", this.cliente.getNome()));
         System.out.println(String.format("Agencia: %d ", this.agencia));

@@ -1,10 +1,13 @@
 package defaultPackage;
 
+import defaultPackage.conta.Conta;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Banco {
     private String nome;
-    private List<Conta> contas;
+    private List<Conta> contas = new ArrayList<>();
 
     public Banco(String nome) {
         this.nome = nome;
@@ -22,4 +25,12 @@ public class Banco {
     public void setContas(List<Conta> contas) {
         this.contas = contas;
     }
+    public void addConta(Conta contaNova){
+        this.contas.add(contaNova);
+    }
+
+    public void listagemDeContas(){
+        this.contas.forEach(n -> n.imprimirExtrato());
+    }
 }
+//n -> n.imprimirDadosComuns()
