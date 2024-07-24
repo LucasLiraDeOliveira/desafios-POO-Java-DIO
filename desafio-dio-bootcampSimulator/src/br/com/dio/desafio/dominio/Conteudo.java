@@ -20,6 +20,9 @@ public abstract class Conteudo {
 
 
 
+    //Metodos da classe Conteudo:
+    public abstract double calcularXP();
+
 
 
     //Metodos Getters e Setters dos atributos:
@@ -38,9 +41,4 @@ public abstract class Conteudo {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
-
-
-    //Metodos da classe Conteudo:
-    public abstract double calcularXP();
 }

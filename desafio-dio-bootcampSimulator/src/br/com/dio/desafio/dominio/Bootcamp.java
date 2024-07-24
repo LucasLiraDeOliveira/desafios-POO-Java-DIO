@@ -11,7 +11,7 @@ public class Bootcamp {
     private String nome;
     private String descricao;
     private final LocalDate dataInicial = LocalDate.now();
-    private final LocalDate dataFinal = dataInicial.plus(45); // Colocamos o fianl nas
+    private final LocalDate dataFinal = dataInicial.plusDays(45); // Colocamos o final nas
     // duas pois as datas dos bootcamps não são alteradas após instituidas
     private Set<Dev> devsInscritos = new HashSet<>(); //Por não ter duas pessoas iguais no mesmo
     // bootcamp usaremos o metodo SET. E usaremos HashSet pois a ordem que eles estão
